@@ -1,4 +1,4 @@
-export async  function GET(){
+export async function GET(){
 
     const usuarios = [
 
@@ -19,7 +19,7 @@ export async  function GET(){
         {
             status: 200,
             headers: { "content-type": "application/json" }
-            
+
         }
     )
 

@@ -1,95 +1,121 @@
-import Image from "next/image";
-import styles from "./page.module.css";
-
 export default function Home() {
-  return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol>
-          <li>
-            Get started by editing <code>app/page.js</code>.
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
 
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.secondary}
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className={styles.footer}>
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+
+  return (
+
+
+
+     <div>
+
+      <style>
+
+        {`
+          table {
+          width: 100%;
+          border-collapse: collapse;
+          margin: 20px 0;
+          font-family: Arial, sans-serif;
+          }
+              
+          th, td {
+          padding: 12px;
+          text-align: left;
+          border: 1px solid #ddd;
+          }
+              
+          th {
+          background-color: #4CAF50;
+          color: white;
+          }
+              
+          tr:nth-child(even) {
+          background-color: #f2f2f2;
+          }
+              
+          tr:hover {
+          background-color: #ddd;
+          }
+              
+          td {
+          font-size: 14px;
+          }
+        `}
+
+      </style>
+
+
+
+
+
+
+       <h1>Gerenciamento de produtos</h1><br/>
+
+       <button>Listagem</button>
+       <button>Cadastro</button>
+
+       <br/><br/>
+
+       <hr/><br/>
+
+
+
+
+
+       <h2>Listagem</h2><br/>
+
+
+        <table>
+
+          <tr>
+
+             <td>ID</td>
+             <td>Nome</td>
+             <td>Preço</td>
+             <td>Quantidade</td>
+             <td>Registro</td>
+
+          </tr>
+
+          <tr>
+
+             <td>1</td>
+             <td>Calça jeans</td>
+             <td>R$: 19,90</td>
+             <td>50</td>
+             <td>04/04/2025 ás 14:20</td>
+
+          </tr>
+
+
+
+        </table>
+
+
+       <hr/><br/>
+
+
+
+
+
+       <h2>Cadastro</h2><br/>
+
+       <form>
+
+          <label> Digite o nome do produto: <br/> <input/> </label><br/>
+          <br/>
+          <label> Digite o preço: <br/> <input/> </label><br/>
+          <br/>
+          <label> Digite a quantidade: <br/> <input/> </label><br/>
+          <br/>
+          <button>Salvar</button>
+
+       </form>
+
+
+
     </div>
+
+
+
   );
 }

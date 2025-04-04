@@ -1,121 +1,121 @@
+'use client'
+import axios from "axios";
+import { useEffect, useState } from "react";
+
+
 export default function Home() {
 
+    const [ produtos, alteraProdutos ] = useState([])
 
-  return (
+    async function buscaTodos(){
+        const response = await axios.get("http://localhost:3000/api/produtos")
+        alteraProdutos( response.data )
+    }
 
+    function buscaPorID(){}
+    function buscaPorNome(){}
+    function insereProduto(){}
+    function atualizaProduto(){}
+    function removeProduto(){}
 
+    function formataData( valor ){
+        let data = valor.split("T")[0]
+        let hora = valor.split("T")[1]
 
-     <div>
+        data = data.split("-")
+        data = data.reverse()
+        data = data.join("/")
 
-      <style>
+        hora = hora.split(".")[0]
+        hora = hora.split(":")
+        hora = hora[0]+":"+hora[1]
 
-        {`
-          table {
-          width: 100%;
-          border-collapse: collapse;
-          margin: 20px 0;
-          font-family: Arial, sans-serif;
-          }
-              
-          th, td {
-          padding: 12px;
-          text-align: left;
-          border: 1px solid #ddd;
-          }
-              
-          th {
-          background-color: #4CAF50;
-          color: white;
-          }
-              
-          tr:nth-child(even) {
-          background-color: #f2f2f2;
-          }
-              
-          tr:hover {
-          background-color: #ddd;
-          }
-              
-          td {
-          font-size: 14px;
-          }
-        `}
+        return data+" às "+hora
 
-      </style>
+    }
 
+    useEffect( ()=> {
+        buscaTodos()
+    }, [] )
 
+    return (
+        <div>
+            
+            <style>
+                {`
+                table {
+                    width: 100%;
+                    border-collapse: collapse;
+                    margin: 20px 0;
+                    font-family: Arial, sans-serif;
+                }
+                th, td {
+                    padding: 10px;
+                    text-align: left;
+                    border: 1px solid #ddd;
+                }
+                th {
+                    background-color: #f4f4f4;
+                    color: #333;
+                }
+                tr:nth-child(even) {
+                    background-color: #f9f9f9;
+                }
+                tr:hover {
+                    background-color: #f1f1f1;
+                }
+                `}
+            </style>
 
+            <h1>Gerenciamento de produtos</h1>
 
+            <button>Listagem</button>
+            <button>Cadastro</button>
 
+            <hr/>
 
-       <h1>Gerenciamento de produtos</h1><br/>
+            <h2>Listagem</h2>
 
-       <button>Listagem</button>
-       <button>Cadastro</button>
+            {
+                produtos.length > 0 ?
+                    <table>
+                        <tr>
+                            <td>ID</td>
+                            <td>Nome</td>
+                            <td>Preço</td>
+                            <td>Quantidade</td>
+                            <td>Registro</td>
+                        </tr>
+                        {
+                            produtos.map( i =>
+                                <tr>
+                                    <td>{i.id}</td>
+                                    <td>{i.nome}</td>
+                                    <td>R$ {i.preco.toFixed(2)}</td>
+                                    <td>{i.quantidade}</td>
+                                    <td>{ formataData(i.registro) }</td>
+                                </tr>
+                            )
+                        }
+                    </table>
+                :
+                    <p>Carregando...</p>
+            }
 
-       <br/><br/>
+            <hr/>
 
-       <hr/><br/>
+            <h2>Cadastro</h2>
 
+            <form>
+                <label> Digite o nome do produto: <br/> <input/> </label>
+                <br/>
+                <label> Digite o preço: <br/> <input/> </label>
+                <br/>
+                <label> Digite a quantidade: <br/> <input/> </label>
+                <br/>
+                <button>Salvar</button>
+            </form>
 
-
-
-
-       <h2>Listagem</h2><br/>
-
-
-        <table>
-
-          <tr>
-
-             <td>ID</td>
-             <td>Nome</td>
-             <td>Preço</td>
-             <td>Quantidade</td>
-             <td>Registro</td>
-
-          </tr>
-
-          <tr>
-
-             <td>1</td>
-             <td>Calça jeans</td>
-             <td>R$: 19,90</td>
-             <td>50</td>
-             <td>04/04/2025 ás 14:20</td>
-
-          </tr>
-
-
-
-        </table>
-
-
-       <hr/><br/>
-
-
-
-
-
-       <h2>Cadastro</h2><br/>
-
-       <form>
-
-          <label> Digite o nome do produto: <br/> <input/> </label><br/>
-          <br/>
-          <label> Digite o preço: <br/> <input/> </label><br/>
-          <br/>
-          <label> Digite a quantidade: <br/> <input/> </label><br/>
-          <br/>
-          <button>Salvar</button>
-
-       </form>
-
-
-
-    </div>
-
-
-
-  );
+        </div>
+    );
 }

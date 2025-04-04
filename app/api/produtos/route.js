@@ -35,5 +35,9 @@ export async function POST(){
         [body.nome, body.preco, body.quantidade]
     )
 
+    return new Response(
+        JSON.stringify (results.insertId)
+    )
+
     
 }

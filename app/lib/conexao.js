@@ -5,7 +5,7 @@ const conexao = await mysql.createConnection({
     host: "localhost",
     user: "root",
     password: "",
-    database: "serasa2025_teste"
+    database: "serasa_teste"
 })
 
 export default conexao;

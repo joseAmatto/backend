@@ -20,9 +20,9 @@ function produto() {
     useEffect(()=> {
 
         if(id){
-        buscarPorId( useParams().id )
+        buscarPorId( id )
         }
-        
+
     }, [id])
  
 
@@ -31,6 +31,21 @@ function produto() {
         <div>
 
             <h1> Detalhes do produto { useParams().id } </h1>
+
+            <hr/>
+
+            {
+                produtos.lenght > 0 &&
+
+                <div>
+
+                    <p><strong>{produtos[0].nome}</strong></p>
+                    <p>R$: <strong>{produtos[0].preco}</strong></p>
+                    <p>quantidade em estoque: <strong>{produtos[0].quantidade}</strong></p>
+
+                </div>
+
+            }
 
         </div>
     );
